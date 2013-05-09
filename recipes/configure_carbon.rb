@@ -17,6 +17,31 @@ file "/opt/graphite/conf/storage-schemas.conf" do
   notifies :restart, "service[carbon-cache]"
 end
 
+file "/opt/graphite/conf/storage-aggregation.conf" do
+  content node.generate_ini(node['graphite']['carbon']['storage-aggregation'])
+  notifies :restart, "service[carbon-cache]"
+end
+
+file "/opt/graphite/conf/relay-rules.conf" do
+  content node.generate_ini(node['graphite']['carbon']['relay-rules'])
+  notifies :restart, "service[carbon-cache]"
+end
+
+file "/opt/graphite/conf/aggregation-rules.conf" do
+  content node.generate_lines(node['graphite']['carbon']['aggregation-rules'])
+  notifies :restart, "service[carbon-cache]"
+end
+
+file "/opt/graphite/conf/whitelist.conf" do
+  content node.generate_lines(node['graphite']['carbon']['whitelist'])
+  notifies :restart, "service[carbon-cache]"
+end
+
+file "/opt/graphite/conf/blacklist.conf" do
+  content node.generate_lines(node['graphite']['carbon']['blacklist'])
+  notifies :restart, "service[carbon-cache]"
+end
+
 service "carbon-cache" do
   action [:enable, :start]
 end

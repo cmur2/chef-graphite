@@ -9,6 +9,7 @@ Installs and configures carbon and/or graphite-webapp (including whisper and oth
 ### Limitations
 
 * there is currently only a Debian 6 init script using FastCGI adapter
+* carbon-relay/carbon-aggregator service management missing (only config)
 
 ## Usage
 

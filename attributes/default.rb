@@ -58,6 +58,16 @@ default['graphite']['carbon']['main'] = {
 default['graphite']['carbon']['storage-schemas'] = {
   'default_1min_for_1day' => {
     'pattern' => '^.*',
-    'retentions' => '60s:7d'
+    'retentions' => '60s:1d'
   }
 }
+
+default['graphite']['carbon']['storage-aggregation'] = {}
+
+default['graphite']['carbon']['relay-rules'] = {}
+
+default['graphite']['carbon']['aggregation-rules'] = []
+
+default['graphite']['carbon']['whitelist'] = []
+
+default['graphite']['carbon']['blacklist'] = []

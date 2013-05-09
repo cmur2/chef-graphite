@@ -24,4 +24,9 @@ class Chef::Node
     lines << ''
     lines.join "\n"
   end
+
+  def generate_lines(lines)
+    lines << ''
+    lines.join "\n"
+  end
 end
