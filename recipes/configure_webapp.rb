@@ -1,6 +1,6 @@
 
-cookbook_file '/etc/init.d/graphite-webapp' do
-  source 'graphite-webapp.sh'
+template '/etc/init.d/graphite-webapp' do
+  source "graphite-webapp-#{node['graphite']['webapp']['flavor']}.sh.erb"
   mode 00755
 end
 
