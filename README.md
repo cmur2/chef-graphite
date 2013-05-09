@@ -15,7 +15,7 @@ Installs and configures carbon and/or graphite-webapp (including whisper and oth
 
 ## Usage
 
-Use `recipe[graphite::default]` for getting the full program including standalone carbon and graphite-webapp with AMQP and RRD support enabled.
+Use `recipe[graphite::default]` for getting the full program including standalone carbon and/or graphite-webapp with AMQP and RRD support enabled. You can customize everything when using the default recipe - all other recipes are for internal use only.
 
 ## Requirements
 
