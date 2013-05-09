@@ -1,0 +1,3 @@
+*.lock
+spec/support/cookbooks/
+spec/support/tmp/
