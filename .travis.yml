@@ -1,0 +1,12 @@
+language: ruby
+
+rvm:
+  - 1.9.3
+
+gemfile:
+  - Gemfile
+  - spec/support/gemfiles/Gemfile.chef11
+
+before_script:
+  - ln -s chef-graphite ../graphite
+  - cd spec/support/; librarian-chef install; cd ../..

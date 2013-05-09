@@ -6,3 +6,6 @@ gem 'rake'
 gem 'foodcritic', :platform => :ruby_19
 gem 'chefspec'
 gem 'librarian-chef', :platform => :ruby_19
+
+gem 'guard-rspec', require: false
+gem 'rb-readline', require: false
