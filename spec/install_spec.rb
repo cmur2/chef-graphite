@@ -10,10 +10,22 @@ describe 'graphite::install' do
     chef_runner.converge 'graphite::install'
   end
 
-  it 'installs required native dependencies' do
-    dep_pkgs = %w[python-cairo python-django python-django-tagging python-memcache python-pysqlite2 python-rrdtool python-simplejson python-twisted]
-    dep_pkgs.each do |p|
-      expect(chef_run).to install_package p
+  {
+    'Debian 6' =>  {
+      'platform' => 'debian',
+      'version' => '6.0.0',
+      'dep_pkgs' => %w[python-cairo python-django python-django-tagging python-memcache python-pysqlite2 python-rrdtool python-simplejson python-twisted]
+    }
+  }.each do |display_name, config|
+    context "on #{display_name}" do
+      it 'installs required native dependencies' do
+        chef_runner.node.automatic_attrs['platform'] = config['platform']
+        chef_runner.node.automatic_attrs['platform_version'] = config['version']
+        chef_run = chef_runner.converge 'graphite::install'
+        config['dep_pkgs'].each do |p|
+          expect(chef_run).to install_package p
+        end
+      end
     end
   end
 
