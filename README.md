@@ -6,6 +6,10 @@
 
 Installs and configures carbon and/or graphite-webapp (including whisper and other required dependencies). Against others there will be no webserver etc. setup because that's another cookbook's job.
 
+### Limitations
+
+* there is currently only a Debian 6 init script using FastCGI adapter
+
 ## Usage
 
 Use `recipe[graphite::default]` for getting the full program including standalone carbon and graphite-webapp with AMQP and RRD support enabled.
@@ -22,7 +26,7 @@ Other cookbooks: python.
 
 ### default
 
-By using `node['graphite']['install_target']` you can choose between three different modes: the default `'both'` will install carbon and the graphite webapp, `'carbon'` will only install the first, `'graphite-web'` only the latter.
+By using `node['graphite']['install_mode']` you can choose between three different modes: the default `'both'` will install carbon and the graphite webapp, `'carbon'` will only install the first, `'graphite-web'` only the latter.
 
 All graphite services will run as and relevant directories will belong to `node['graphite']['user']` and `node['graphite']['group']` where the default is `graphite`/`graphite`.
 

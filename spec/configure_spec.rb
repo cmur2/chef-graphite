@@ -14,20 +14,20 @@ describe 'graphite::configure' do
     'both',
     'carbon',
     'graphite-web'
-  ].each do |install_target|
-    context "with install target #{install_target}" do
+  ].each do |install_mode|
+    context "with install target #{install_mode}" do
       it 'configures carbon' do
-        chef_runner.node.set['graphite']['install_target'] = install_target
+        chef_runner.node.set['graphite']['install_mode'] = install_mode
         chef_run = chef_runner.converge 'graphite::configure'
         
-        expect(chef_run).to include_recipe 'graphite::configure_carbon' if install_target == 'both' or install_target == 'carbon'
+        expect(chef_run).to include_recipe 'graphite::configure_carbon' if install_mode == 'both' or install_mode == 'carbon'
       end
 
       it 'configures graphite-web' do
-        chef_runner.node.set['graphite']['install_target'] = install_target
+        chef_runner.node.set['graphite']['install_mode'] = install_mode
         chef_run = chef_runner.converge 'graphite::configure'
         
-        expect(chef_run).to include_recipe 'graphite::configure_webapp' if install_target == 'both' or install_target == 'graphite-web'
+        expect(chef_run).to include_recipe 'graphite::configure_webapp' if install_mode == 'both' or install_mode == 'graphite-web'
       end
     end
   end

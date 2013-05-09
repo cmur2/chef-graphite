@@ -1,6 +1,6 @@
 
 template '/etc/init.d/graphite-webapp' do
-  source "graphite-webapp-#{node['graphite']['webapp']['flavor']}.sh.erb"
+  source "graphite-webapp-#{node['graphite']['webapp']['adapter']}.sh.erb"
   mode 00755
 end
 
@@ -21,6 +21,7 @@ file "/opt/graphite/webapp/graphite/local_settings.py" do
   owner node['graphite']['user']
   group node['graphite']['group']
   mode 00660
+  notifies :restart, "service[graphite-webapp]"
 end
 
 service "graphite-webapp" do

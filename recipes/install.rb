@@ -20,13 +20,13 @@ dep_pip_pkgs.each do |p|
   end
 end
 
-if node['graphite']['install_target'] == 'both' or node['graphite']['install_target'] == 'carbon'
+if node['graphite']['install_mode'] == 'both' or node['graphite']['install_mode'] == 'carbon'
   python_pip 'carbon' do
     action :install
   end
 end
 
-if node['graphite']['install_target'] == 'both' or node['graphite']['install_target'] == 'graphite-web'
+if node['graphite']['install_mode'] == 'both' or node['graphite']['install_mode'] == 'graphite-web'
   python_pip 'graphite-web' do
     action :install
   end
