@@ -29,7 +29,7 @@ Other cookbooks: python.
 
 ### default
 
-By using `node['graphite']['install_mode']` you can choose between three different modes: the default `'both'` will install carbon and the graphite webapp, `'carbon'` will only install the first, `'graphite-web'` only the latter.
+Carbon gets installed and configures when `node['graphite']['install_carbon']` is true. Graphite webbapp gets installed and configures when `node['graphite']['install_webapp']` is true.
 
 All graphite services will run as and relevant directories will belong to `node['graphite']['user']` and `node['graphite']['group']` where the default is `graphite`/`graphite`.
 

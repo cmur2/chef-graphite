@@ -37,21 +37,23 @@ describe 'graphite::install' do
   [
     'both',
     'carbon',
-    'graphite-web'
+    'webapp'
   ].each do |install_mode|
     context "with install target #{install_mode}" do
       it 'installs carbon via pip' do
-        chef_runner.node.set['graphite']['install_mode'] = install_mode
+        chef_runner.node.set['graphite']['install_carbon'] = (install_mode == 'both' or install_mode == 'carbon')
+        chef_runner.node.set['graphite']['install_webapp'] = (install_mode == 'both' or install_mode == 'webapp')
         chef_run = chef_runner.converge 'graphite::install'
         
         pending 'unable to detect pip installs' if install_mode == 'both' or install_mode == 'carbon'
       end
 
       it 'installs graphite-web via pip' do
-        chef_runner.node.set['graphite']['install_mode'] = install_mode
+        chef_runner.node.set['graphite']['install_carbon'] = (install_mode == 'both' or install_mode == 'carbon')
+        chef_runner.node.set['graphite']['install_webapp'] = (install_mode == 'both' or install_mode == 'webapp')
         chef_run = chef_runner.converge 'graphite::install'
 
-        pending 'unable to detect pip installs' if install_mode == 'both' or install_mode == 'graphite-web'
+        pending 'unable to detect pip installs' if install_mode == 'both' or install_mode == 'webapp'
       end
     end
   end

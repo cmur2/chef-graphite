@@ -1,5 +1,6 @@
 
-default['graphite']['install_mode'] = 'both'
+default['graphite']['install_carbon'] = true
+default['graphite']['install_webapp'] = true
 default['graphite']['user'] = 'graphite'
 default['graphite']['group'] = 'graphite'
 
