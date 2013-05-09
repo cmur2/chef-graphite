@@ -13,7 +13,7 @@ dep_pkgs.each do |p|
   package p
 end
 
-dep_pip_pkgs = %w[whsiper txamqp]
+dep_pip_pkgs = %w[whisper txamqp]
 dep_pip_pkgs.each do |p|
   python_pip p do
     action :install
