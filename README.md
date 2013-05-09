@@ -8,7 +8,7 @@ Installs and configures carbon and/or graphite-webapp (including whisper and oth
 
 ## Usage
 
-Use `recipe[graphite::default]` for getting the full program including standalone carbon and graphite-webapp.
+Use `recipe[graphite::default]` for getting the full program including standalone carbon and graphite-webapp with AMQP and RRD support enabled.
 
 ## Requirements
 
@@ -22,7 +22,7 @@ Other cookbooks: python.
 
 ### default
 
-
+By using `node['graphite']['install_target']` you can choose between three different modes: the default `'both'` will install carbon and the graphite webapp, `'carbon'` will only install the first, `'graphite-web'` only the latter.
 
 ## License
 
