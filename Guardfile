@@ -2,6 +2,7 @@
 guard 'rspec', :all_after_pass => false, :all_on_start => false do
   watch(%r{^attributes/(.+)\.rb$}) { "spec" }
   watch(%r{^files/(.+)\.rb$}) { "spec" }
+  watch(%r{^libraries/(.+)\.rb$}) { "spec" }
   watch(%r{^templates/(.+)\.rb$}) { "spec" }
   watch(%r{^recipes/(.+)\.rb$}) { |m| "spec/#{m[1]}_spec.rb" }
   watch(%r{^spec/(.+)_spec\.rb$}) { |m| "spec/#{m[1]}_spec.rb" }
