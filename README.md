@@ -4,7 +4,7 @@
 
 ## Description
 
-Installs and configures carbon and/or graphite-webapp (including whisper and other required dependencies). Against others there will be no webserver etc. setup because that's another cookbook's job.
+Installs and configures Carbon and/or [Graphite](http://graphite.readthedocs.org/) (the webapp) (including whisper and other required dependencies). Against others there will be no webserver etc. setup because that's another cookbook's job.
 
 ### Limitations
 
@@ -12,6 +12,7 @@ Installs and configures carbon and/or graphite-webapp (including whisper and oth
 * carbon-relay/carbon-aggregator service management missing (only config)
 * carbon-cache is started automatically without choice which out of the carbon-X family to start
 * no typed configuration files where e.g. nested array might be transformed into matching data structure, so everything are plain strings
+* insider: `USER = graphite_user` in carbon.conf unsupported
 
 ## Usage
 
@@ -23,7 +24,9 @@ Use `recipe[graphite::default]` for getting the full program including standalon
 
 Since this cookbook heavily relies on Pythons `pip` to install the graphite components it should work on any platform that supports it but several dependencies are also pulled in via systems package control, where only Debian is currently supported.
 
-Other cookbooks: python.
+Required cookbooks: python
+
+For supported Chef/Ruby version see [Travis](https://travis-ci.org/cmur2/chef-graphite).
 
 ## Recipes
 
