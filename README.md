@@ -30,6 +30,10 @@ By using `node['graphite']['install_mode']` you can choose between three differe
 
 All graphite services will run as and relevant directories will belong to `node['graphite']['user']` and `node['graphite']['group']` where the default is `graphite`/`graphite`.
 
+## Notes
+
+carbon-cache Debian 6 init script was [stolen here](https://gist.github.com/chalmerj/1492384).
+
 ## License
 
 chef-graphite is licensed under the Apache License, Version 2.0. See LICENSE for more information.
