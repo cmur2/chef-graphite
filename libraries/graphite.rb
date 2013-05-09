@@ -10,4 +10,18 @@ class Chef::Node
     lines << ''
     lines.join "\n"
   end
+
+  def generate_ini(sections)
+    lines = []
+    sections.each do |sectionname, entries|
+      next if entries.nil?
+      lines << ''
+      lines << "[#{sectionname}]"
+      entries.each do |key, value|
+        lines << "#{key} = #{value}"
+      end
+    end
+    lines << ''
+    lines.join "\n"
+  end
 end
