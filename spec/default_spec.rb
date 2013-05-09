@@ -27,6 +27,10 @@ describe 'graphite::default' do
     expect(chef_run).to create_group 'bar'
   end
 
+  it 'creates runfiles directory' do
+    expect(chef_run).to create_directory '/var/run/graphite'
+  end
+
   it 'sets up and configures graphite' do
     expect(chef_run).to include_recipe 'graphite::install'
     expect(chef_run).to include_recipe 'graphite::configure'
