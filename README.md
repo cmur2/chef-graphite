@@ -53,7 +53,7 @@ The carbon config resides under `node['graphite']['carbon']` where the separate 
 
 Regarding the different formats and how they are mapped onto Ruby data structures:
 
-* ini format: a file is represented as a hash of `section_name => section_content` where `section_content` is another hash containing the section's content as simple key/value pairs (both strings)
+* ini format: a file is represented as a hash of `section_name => section_content` where `section_content` is another hash containing the section's content as simple key/value pairs (both strings). Corner case: an empty string for the section_content skips the whole section in case you want to e.g. overwrite a predefined section.
 * line list format: a file is represented as an array of strings for each line
 
 ## Notes
