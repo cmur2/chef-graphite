@@ -9,10 +9,10 @@ dep_pkgs.each do |p|
   python_pip p
 end
 
-if ['graphite']['install_target'] == 'both' or ['graphite']['install_target'] == 'carbon'
+if node['graphite']['install_target'] == 'both' or node['graphite']['install_target'] == 'carbon'
   python_pip 'carbon'
 end
 
-if ['graphite']['install_target'] == 'both' or ['graphite']['install_target'] == 'graphite-web'
+if node['graphite']['install_target'] == 'both' or node['graphite']['install_target'] == 'graphite-web'
   python_pip 'graphite-web'
 end
