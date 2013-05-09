@@ -7,13 +7,12 @@ when 'debian'
   end
 end
 
-
 dep_pkgs.each do |p|
   package p
 end
 
 dep_pip_pkgs = %w[whsiper txamqp]
-dep_pkgs.each do |p|
+dep_pip_pkgs.each do |p|
   python_pip p do
     action :install
   end
