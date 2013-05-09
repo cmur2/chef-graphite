@@ -14,7 +14,7 @@ describe 'graphite::install' do
     'Debian 6' =>  {
       'platform' => 'debian',
       'version' => '6.0.0',
-      'dep_pkgs' => %w[python-cairo python-django python-django-tagging python-memcache python-pysqlite2 python-rrdtool python-simplejson python-twisted]
+      'dep_pkgs' => %w[python-cairo python-django python-django-tagging python-flup python-memcache python-pysqlite2 python-rrdtool python-simplejson python-twisted]
     }
   }.each do |display_name, config|
     context "on #{display_name}" do

@@ -5,7 +5,7 @@ case node['platform']
 when 'debian'
   case node['platform_version'].to_i
   when 6
-    dep_pkgs = %w[python-cairo python-django python-django-tagging python-memcache python-pysqlite2 python-rrdtool python-simplejson python-twisted]
+    dep_pkgs = %w[python-cairo python-django python-django-tagging python-flup python-memcache python-pysqlite2 python-rrdtool python-simplejson python-twisted]
   end
 end
 
