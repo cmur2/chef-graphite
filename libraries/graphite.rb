@@ -14,7 +14,7 @@ class Chef::Node
   def generate_ini(sections)
     lines = []
     sections.each do |sectionname, entries|
-      next if entries.nil?
+      next if entries.nil? or entries == '' # ability to overwrite existing entries with an empty string to skip them
       lines << ''
       lines << "[#{sectionname}]"
       entries.each do |key, value|
