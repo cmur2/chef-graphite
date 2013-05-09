@@ -1,4 +1,6 @@
 
+dep_pkgs = %w[]
+
 case node[:platform]
 when 'debian'
   case node[:platform_version].to_i

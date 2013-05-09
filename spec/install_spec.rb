@@ -41,10 +41,16 @@ describe 'graphite::install' do
   ].each do |install_target|
     context "with install target #{install_target}" do
       it 'installs carbon via pip' do
+        chef_runner.node.set['graphite']['install_target'] = install_target
+        chef_run = chef_runner.converge 'graphite::install'
+        
         pending 'unable to detect pip installs' if install_target == 'both' or install_target == 'carbon'
       end
 
       it 'installs graphite-web via pip' do
+        chef_runner.node.set['graphite']['install_target'] = install_target
+        chef_run = chef_runner.converge 'graphite::install'
+
         pending 'unable to detect pip installs' if install_target == 'both' or install_target == 'graphite-web'
       end
     end
