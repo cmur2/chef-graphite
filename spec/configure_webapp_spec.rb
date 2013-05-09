@@ -26,7 +26,7 @@ describe 'graphite::configure_webapp' do
     expect(chef_run).to create_file_with_content "/opt/graphite/webapp/graphite/local_settings.py", ''
   end
 
-  it 'enabled and starts graphite-webapp' do
+  it 'enables and starts graphite-webapp' do
     expect(chef_run).to start_service 'graphite-webapp'
     expect(chef_run).to set_service_to_start_on_boot 'graphite-webapp'
   end
