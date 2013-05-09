@@ -24,6 +24,8 @@ Other cookbooks: python.
 
 By using `node['graphite']['install_target']` you can choose between three different modes: the default `'both'` will install carbon and the graphite webapp, `'carbon'` will only install the first, `'graphite-web'` only the latter.
 
+All graphite services will run as and relevant directories will belong to `node['graphite']['user']` and `node['graphite']['group']` where the default is `graphite`/`graphite`.
+
 ## License
 
 chef-graphite is licensed under the Apache License, Version 2.0. See LICENSE for more information.
