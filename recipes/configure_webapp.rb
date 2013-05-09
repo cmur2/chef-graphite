@@ -9,7 +9,7 @@ execute 'setup-django-database' do
   cwd '/opt/graphite/webapp/graphite'
   user node['graphite']['user']
   group node['graphite']['group']
-  not_if { 'test -f /opt/graphite/storage/graphite.db' }
+  not_if 'test -f /opt/graphite/storage/graphite.db'
 end
 
 execute 'chown-storage-dir' do
