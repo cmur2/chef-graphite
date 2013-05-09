@@ -13,6 +13,7 @@ Installs and configures Carbon and/or [Graphite](http://graphite.readthedocs.org
 * carbon-cache is started automatically without choice which out of the carbon-X family to start
 * no typed configuration files where e.g. nested array might be transformed into matching data structure, so everything are plain strings
 * logrotate
+* dashboard.conf and graphTemplates
 * insider: `USER = graphite_user` in carbon.conf unsupported
 
 ## Usage
