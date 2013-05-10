@@ -9,16 +9,17 @@ Installs and configures Carbon and/or [Graphite](http://graphite.readthedocs.org
 ### Limitations
 
 * there is currently only a Debian 6 init script using FastCGI adapter
-* carbon-relay/carbon-aggregator service management missing (only config)
-* carbon-cache is started automatically without choice which out of the carbon-X family to start
+* dashboard.conf and graphTemplates
+
+Internals:
+
 * no typed configuration files where e.g. nested array might be transformed into matching data structure, so everything are plain strings
 * logrotate
-* dashboard.conf and graphTemplates
-* insider: `USER = graphite_user` in carbon.conf unsupported
+* `USER = graphite_user` in carbon.conf unsupported
 
 ## Usage
 
-Use `recipe[graphite::default]` for getting the full program including standalone carbon and/or graphite-webapp with AMQP and RRD support enabled. You can customize everything when using the default recipe - all other recipes are for internal use only.
+Use `recipe[graphite::default]` for getting the full program including standalone carbon-cache and/or graphite-webapp with AMQP and RRD support enabled. You can customize everything (enabling the other carbon daemons etc) when using the default recipe - all other recipes are for internal use only.
 
 ## Requirements
 
@@ -45,6 +46,8 @@ The `node['graphite']['webapp']['adapter']` is used to specify the webapps adapt
 Each adapters settings are below `node['graphite']['webapp']['<adapter_name>']` and specific for each adapter:
 
 * FastCGI: `node['graphite']['webapp']['fastcgi']['host']` and `node['graphite']['webapp']['fastcgi']['port']` to listen for connections
+
+There are three daemons in the carbon family and you can use the boolean `node['graphite']['carbon']['enable_cache']` / `node['graphite']['carbon']['enable_relay']` / `node['graphite']['carbon']['enable_aggregator']` to decide which should be started.
 
 The carbon config resides under `node['graphite']['carbon']` where the separate config files are built from:
 

@@ -10,6 +10,10 @@ default['graphite']['webapp']['adapter'] = 'fastcgi'
 default['graphite']['webapp']['fastcgi']['host'] = '127.0.0.1'
 default['graphite']['webapp']['fastcgi']['port'] = '3000'
 
+default['graphite']['carbon']['enable_cache'] = true
+default['graphite']['carbon']['enable_relay'] = false
+default['graphite']['carbon']['enable_aggregator'] = false
+
 default['graphite']['carbon']['main'] = {
   'cache' => {
     'USER' => '',

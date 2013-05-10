@@ -11,7 +11,21 @@ describe 'graphite::configure_carbon' do
   end
   
   it 'creates an carbon-cache init script' do
+    chef_runner.node.set['graphite']['carbon']['enable_cache'] = true
+    chef_run = chef_runner.converge 'graphite::configure_carbon'
     expect(chef_run).to create_file_with_content '/etc/init.d/carbon-cache', ''
+  end
+
+  it 'creates an carbon-relay init script' do
+    chef_runner.node.set['graphite']['carbon']['enable_relay'] = true
+    chef_run = chef_runner.converge 'graphite::configure_carbon'
+    expect(chef_run).to create_file_with_content '/etc/init.d/carbon-relay', ''
+  end
+
+  it 'creates an carbon-aggregator init script' do
+    chef_runner.node.set['graphite']['carbon']['enable_aggregator'] = true
+    chef_run = chef_runner.converge 'graphite::configure_carbon'
+    expect(chef_run).to create_file_with_content '/etc/init.d/carbon-aggregator', ''
   end
 
   it 'configures carbon' do
@@ -43,7 +57,23 @@ describe 'graphite::configure_carbon' do
   end
 
   it 'enables and starts carbon-cache' do
+    chef_runner.node.set['graphite']['carbon']['enable_cache'] = true
+    chef_run = chef_runner.converge 'graphite::configure_carbon'
     expect(chef_run).to start_service 'carbon-cache'
     expect(chef_run).to set_service_to_start_on_boot 'carbon-cache'
+  end
+
+  it 'enables and starts carbon-relay' do
+    chef_runner.node.set['graphite']['carbon']['enable_relay'] = true
+    chef_run = chef_runner.converge 'graphite::configure_carbon'
+    expect(chef_run).to start_service 'carbon-relay'
+    expect(chef_run).to set_service_to_start_on_boot 'carbon-relay'
+  end
+
+  it 'enables and starts carbon-aggregator' do
+    chef_runner.node.set['graphite']['carbon']['enable_aggregator'] = true
+    chef_run = chef_runner.converge 'graphite::configure_carbon'
+    expect(chef_run).to start_service 'carbon-aggregator'
+    expect(chef_run).to set_service_to_start_on_boot 'carbon-aggregator'
   end
 end
