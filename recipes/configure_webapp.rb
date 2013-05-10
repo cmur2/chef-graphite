@@ -16,6 +16,22 @@ file "/opt/graphite/webapp/graphite/local_settings.py" do
   notifies :restart, "service[graphite-webapp]"
 end
 
+file "/opt/graphite/conf/dashboard.conf" do
+  content node.generate_ini(node['graphite']['webapp']['dashboard'])
+  owner node['graphite']['user']
+  group node['graphite']['group']
+  mode 00660
+  notifies :restart, "service[graphite-webapp]"
+end
+
+file "/opt/graphite/conf/graphTemplates.conf" do
+  content node.generate_ini(node['graphite']['webapp']['graphTemplates'])
+  owner node['graphite']['user']
+  group node['graphite']['group']
+  mode 00660
+  notifies :restart, "service[graphite-webapp]"
+end
+
 # execute after generating config
 execute 'setup-django-database' do
   command 'python manage.py syncdb --noinput'

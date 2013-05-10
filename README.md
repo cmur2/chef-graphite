@@ -9,7 +9,6 @@ Installs and configures Carbon and/or [Graphite](http://graphite.readthedocs.org
 ### Limitations
 
 * there is currently only a Debian 6 init script using FastCGI adapter
-* dashboard.conf and graphTemplates
 
 Internals:
 
@@ -39,6 +38,8 @@ Carbon gets installed and configures when `node['graphite']['install_carbon']` i
 
 All graphite services will run as and relevant directories will belong to `node['graphite']['user']` and `node['graphite']['group']` where the default is `graphite`/`graphite`.
 
+#### Webapp
+
 The webapp is configured with the hash `node['graphite']['webapp']['local_settings']` that is directly used to build the `local_settings.py`, every entry in the hash is converted into a python statement of the form `key = value` which allows any values.
 
 The `node['graphite']['webapp']['adapter']` is used to specify the webapps adapter like FastCGI/uwsgi etc where only FastCGI is implemented currently (submit pull requests or issues for more).
@@ -46,6 +47,12 @@ The `node['graphite']['webapp']['adapter']` is used to specify the webapps adapt
 Each adapters settings are below `node['graphite']['webapp']['<adapter_name>']` and specific for each adapter:
 
 * FastCGI: `node['graphite']['webapp']['fastcgi']['host']` and `node['graphite']['webapp']['fastcgi']['port']` to listen for connections
+
+The dashboard config is built from `node['graphite']['webapp']['dashboard']` (ini format).
+
+The graph templates are built from `node['graphite']['webapp']['graphTemplates']` (ini format).
+
+### Carbon
 
 There are three daemons in the carbon family and you can use the boolean `node['graphite']['carbon']['enable_cache']` / `node['graphite']['carbon']['enable_relay']` / `node['graphite']['carbon']['enable_aggregator']` to decide which should be started.
 
@@ -58,6 +65,8 @@ The carbon config resides under `node['graphite']['carbon']` where the separate 
 * `node['graphite']['carbon']['aggregation-rules']` for aggregation-rules.conf (line list format)
 * `node['graphite']['carbon']['whitelist']` for whitelist.conf (line list format)
 * `node['graphite']['carbon']['blacklist']` for blacklist.conf (line list format)
+
+#### File Formats
 
 Regarding the different formats and how they are mapped onto Ruby data structures:
 
