@@ -19,6 +19,7 @@ Internals:
 ## Usage
 
 Use `recipe[graphite::default]` for getting the full program including standalone carbon-cache and/or graphite-webapp with AMQP and RRD support enabled. You can customize everything (enabling the other carbon daemons etc) when using the default recipe - all other recipes not explicitly listed here are for internal use only.
+
 With `recipe[graphite::logrotate]` you will get *logrotate*-based log file rotation for */opt/graphite/storage/log* automatically for every component you have enabled (out of the carbon-x family + webapp). **But** be careful: since carbon uses it's own *twisted*-based logrotation this recipe will (try to) patch your */opt/graphite/lib/carbon/log.py* file to disable this.
 
 ## Requirements
