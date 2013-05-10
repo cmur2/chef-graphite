@@ -9,11 +9,12 @@ Installs and configures Carbon and/or [Graphite](http://graphite.readthedocs.org
 ### Limitations
 
 * there is currently only a Debian 6 init script using FastCGI adapter
+* logrotate
+* maybe support build-index.sh for search indexes via cron?
 
 Internals:
 
 * no typed configuration files where e.g. nested array might be transformed into matching data structure, so everything are plain strings
-* logrotate
 * `USER = graphite_user` in carbon.conf unsupported
 
 ## Usage
