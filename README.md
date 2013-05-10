@@ -9,7 +9,8 @@ Installs and configures Carbon and/or [Graphite](http://graphite.readthedocs.org
 ### Limitations
 
 * there is currently only a Debian 6 init script using FastCGI adapter
-* logrotate
+* only one carbon daemon of each type per machine
+* can install graphite only in /opt/graphite
 * maybe support build-index.sh for search indexes via cron?
 
 Internals:
