@@ -79,7 +79,9 @@ Regarding the different formats and how they are mapped onto Ruby data structure
 
 ## Notes
 
-carbon-cache Debian 6 init script was [stolen here](https://gist.github.com/chalmerj/1492384).
+The carbon-cache (and therefore derived carbon-relay/carbon-aggregator) Debian 6 init script was [stolen here](https://gist.github.com/chalmerj/1492384).
+
+The *disable_internal_logrotate.patch* comes from [here](http://anonscm.debian.org/gitweb/?p=pkg-graphite/packages/graphite-carbon.git;a=blob_plain;f=debian/patches/disable_internal_logroate.patch;hb=HEAD).
 
 ## License
 

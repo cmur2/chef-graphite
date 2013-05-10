@@ -1,0 +1,31 @@
+Description: disable internal Carbon logrotate, use logrotate #696228
+Author: Jonas Genannt <jonas.genannt@capi2name.de>
+
+--- a/lib/carbon/log.py
++++ b/lib/carbon/log.py
+@@ -3,14 +3,14 @@
+ from zope.interface import implements
+ from twisted.python.log import startLoggingWithObserver, textFromEventDict, msg, err, ILogObserver
+ from twisted.python.syslog import SyslogObserver
+-from twisted.python.logfile import DailyLogFile
++from twisted.python.logfile import LogFile
+ 
+ class CarbonLogObserver(object):
+   implements(ILogObserver)
+ 
+   def log_to_dir(self, logdir):
+     self.logdir = logdir
+-    self.console_logfile = DailyLogFile('console.log', logdir)
++    self.console_logfile = LogFile('console.log', logdir, maxRotatedFiles=None, rotateLength=None)
+     self.custom_logs = {}
+     self.observer = self.logdir_observer
+ 
+@@ -33,7 +33,7 @@
+     log_type = event.get('type')
+ 
+     if log_type is not None and log_type not in self.custom_logs:
+-      self.custom_logs[log_type] = DailyLogFile(log_type + '.log', self.logdir)
++      self.custom_logs[log_type] = LogFile(log_type + '.log', self.logdir, maxRotatedFiles=None, rotateLength=None)
+ 
+     logfile = self.custom_logs.get(log_type, self.console_logfile)
+     logfile.write(message + '\n')
