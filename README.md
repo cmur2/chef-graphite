@@ -56,7 +56,7 @@ The dashboard config is built from `node['graphite']['webapp']['dashboard']` (in
 
 The graph templates are built from `node['graphite']['webapp']['graphTemplates']` (ini format).
 
-### Carbon
+#### Carbon
 
 There are three daemons in the carbon family and you can use the boolean `node['graphite']['carbon']['enable_cache']` / `node['graphite']['carbon']['enable_relay']` / `node['graphite']['carbon']['enable_aggregator']` to decide which should be started.
 
