@@ -24,6 +24,28 @@ begin
         rotate 4
       end
     end
+    
+    if node['graphite']['carbon']['enable_relay']
+      logrotate_app "carbon-relay" do
+        cookbook "logrotate"
+        path "/opt/graphite/storage/log/carbon-relay/carbon-relay-a/*.log"
+        options ["missingok", "compress", "copytruncate"]
+        frequency "weekly"
+        create "644 #{node['graphite']['user']} #{node['graphite']['group']}"
+        rotate 4
+      end
+    end
+    
+    if node['graphite']['carbon']['enable_aggregator']
+      logrotate_app "carbon-aggregator" do
+        cookbook "logrotate"
+        path "/opt/graphite/storage/log/carbon-aggregator/carbon-aggregator-a/*.log"
+        options ["missingok", "compress", "copytruncate"]
+        frequency "weekly"
+        create "644 #{node['graphite']['user']} #{node['graphite']['group']}"
+        rotate 4
+      end
+    end
   end
   
   if node['graphite']['install_webapp']
