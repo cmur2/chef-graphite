@@ -8,7 +8,7 @@ Author: Christian Nicolai <cn@mycrobase.de>
  
  import os, logging
 -from logging.handlers import TimedRotatingFileHandler as Rotater
-+from logging.handlers import FileHandler as Rotater
++from logging import FileHandler as Rotater
  from django.conf import settings
  
  logging.addLevelName(30,"rendering")
