@@ -30,6 +30,8 @@ With `recipe[graphite::logrotate]` you will get *logrotate*-based log file rotat
 
 Since this cookbook heavily relies on Pythons `pip` to install the graphite components it should work on any platform that supports it but several dependencies are also pulled in via systems package control, where only Debian is currently supported.
 
+It's known to work with Graphite components around version 0.9.10.
+
 Required cookbooks: python
 
 For supported Chef/Ruby version see [Travis](https://travis-ci.org/cmur2/chef-graphite).
