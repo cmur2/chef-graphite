@@ -1,4 +1,7 @@
 
+# pin specific versions so python_pip does not always upgrade to 'latest'
+default['graphite']['install_carbon_version'] = '0.9.12'
+default['graphite']['install_webapp_version'] = '0.9.12'
 default['graphite']['install_carbon'] = true
 default['graphite']['install_webapp'] = true
 default['graphite']['user'] = 'graphite'

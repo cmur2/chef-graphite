@@ -42,6 +42,8 @@ For supported Chef/Ruby version see [Travis](https://travis-ci.org/cmur2/chef-gr
 
 Carbon gets installed and configures when `node['graphite']['install_carbon']` is true. Graphite webbapp gets installed and configures when `node['graphite']['install_webapp']` is true.
 
+The version to be installed is pinned to specific versions so python_pip does not always upgrade to `'latest'` version, change via `node['graphite']['install_carbon_version']` and `node['graphite']['install_webapp_version']`.
+
 All graphite services will run as and relevant directories will belong to `node['graphite']['user']` and `node['graphite']['group']` where the default is `graphite`/`graphite`.
 
 #### Webapp

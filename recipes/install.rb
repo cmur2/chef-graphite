@@ -22,12 +22,14 @@ end
 
 if node['graphite']['install_carbon']
   python_pip 'carbon' do
+    version node['graphite']['install_carbon_version']
     action :install
   end
 end
 
 if node['graphite']['install_webapp']
   python_pip 'graphite-web' do
+    version node['graphite']['install_webapp_version']
     action :install
   end
 end
