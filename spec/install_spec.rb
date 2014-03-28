@@ -1,4 +1,4 @@
-require 'chefspec'
+require 'spec_helper'
 
 describe 'graphite::install' do
   let(:chef_runner) do

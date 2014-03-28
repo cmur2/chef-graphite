@@ -1,4 +1,4 @@
-require 'chefspec'
+require 'spec_helper'
 
 describe 'graphite::configure_carbon' do
   let(:chef_runner) do

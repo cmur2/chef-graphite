@@ -1,4 +1,4 @@
-require 'chefspec'
+require 'spec_helper'
 
 describe 'graphite::logrotate' do
   let(:chef_runner) do
