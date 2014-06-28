@@ -3,20 +3,9 @@ begin
   include_recipe "logrotate"
 
   if node['graphite']['install_carbon']
-    cookbook_file "/opt/graphite/disable_carbon_logrotate.patch" do
-      owner node['graphite']['user']
-      group node['graphite']['group']
-    end
-    
     cookbook_file "/opt/graphite/disable_webapp_logrotate.patch" do
       owner node['graphite']['user']
       group node['graphite']['group']
-    end
-    
-    execute "apply-disable-carbon-logrotate-patch" do
-      command "patch -b -p1 -i /opt/graphite/disable_carbon_logrotate.patch"
-      cwd "/opt/graphite"
-      not_if { ::File.exists?("/opt/graphite/lib/carbon/log.py.orig") }
     end
     
     execute "apply-disable-webapp-logrotate-patch" do

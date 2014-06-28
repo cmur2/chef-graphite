@@ -73,6 +73,7 @@ default['graphite']['carbon']['enable_aggregator'] = false
 
 default['graphite']['carbon']['main'] = {
   'cache' => {
+    'ENABLE_LOGROTATION' => 'False',
     'USER' => '',
     'MAX_CACHE_SIZE' => 'inf',
     'MAX_UPDATES_PER_SECOND' => '500',
