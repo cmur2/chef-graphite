@@ -27,6 +27,9 @@ FCGI_METHOD=threaded
 
 set -e
 
+mkdir /var/run/graphite
+chown <%= node['graphite']['user'] %>:root /var/run/graphite
+
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 DESC="FastCGI servers"
 NAME=$0
