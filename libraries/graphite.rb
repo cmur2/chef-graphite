@@ -25,6 +25,21 @@ class Chef::Node
     lines.join "\n"
   end
 
+  def generate_sorted_ini(sections)
+    lines = []
+    sections.each do |entries|
+      next if entries.nil? or entries == '' # ability to overwrite existing entries with an empty string to skip them
+      lines << ''
+      lines << "[#{entries['__sectionname']}]"
+      entries.each do |key, value|
+        next if key == '__sectionname'
+        lines << "#{key} = #{value}"
+      end
+    end
+    lines << ''
+    lines.join "\n"
+  end
+
   def generate_lines(lines)
     lines.join("\n") + "\n"
   end

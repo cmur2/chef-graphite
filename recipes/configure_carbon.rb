@@ -11,12 +11,12 @@ end
 
 # this file is scanned for changes every 60 seconds
 file "/opt/graphite/conf/storage-schemas.conf" do
-  content node.generate_ini(node['graphite']['carbon']['storage-schemas'])
+  content node.generate_sorted_ini(node['graphite']['carbon']['storage-schemas'])
 end
 
 # this file is scanned for changes every 60 seconds
 file "/opt/graphite/conf/storage-aggregation.conf" do
-  content node.generate_ini(node['graphite']['carbon']['storage-aggregation'])
+  content node.generate_sorted_ini(node['graphite']['carbon']['storage-aggregation'])
 end
 
 file "/opt/graphite/conf/relay-rules.conf" do
