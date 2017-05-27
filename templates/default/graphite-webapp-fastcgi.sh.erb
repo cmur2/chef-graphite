@@ -27,7 +27,7 @@ FCGI_METHOD=threaded
 
 set -e
 
-mkdir /var/run/graphite
+mkdir -p /var/run/graphite
 chown <%= node['graphite']['user'] %>:root /var/run/graphite
 
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
